@@ -1,0 +1,114 @@
+<form class="example-form" (ngSubmit)="saveUser(myForm)" #myForm="ngForm">
+    <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="user First name" type="text" name="FirstName" [(ngModel)]="user.FirstName"
+            #myFirstName="ngModel" required>
+        <div class="error" *ngIf="myFirstName.touched&&myFirstName.errors&&myFirstName.errors.required">שם פרטי הוא שדה
+            חובה
+        </div>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="user Last name" type="text" name="LastName" [(ngModel)]="user.LastName"
+            #myLastName="ngModel" required>
+        <div class="error" *ngIf="myLastName.touched&&myLastName.errors&&myLastName.errors.required">שם משפחה הוא שדה
+            חובה
+        </div>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="user ID" type="number" name="TZ" [(ngModel)]="user.TZ" #myId="ngModel" required
+          pattern="[0-9]{9}">
+        <div class="error" *ngIf="myId.touched&&myId.errors&&myId.errors.required">תז היא שדה חובה</div>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Birth-Date</mat-label>
+        <input matInput placeholder="user Last name" type="date" name="BirthDate" [(ngModel)]="user.BirthDate"
+            #myDate="ngModel" required>
+        <div class="error" *ngIf="myDate.touched&&myDate.errors&&myDate.errors.required">תאריך הוא שדה חובה</div>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field appearance="fill">
+        <mat-label>gender</mat-label>
+        <mat-select matNativeControl [(ngModel)]="user.Gender" [ngModelOptions]="{standalone: true}" #myGender="ngModel"
+            required>
+            <mat-option *ngFor="let item of gender" [value]="item">
+                {{item}}
+            </mat-option>
+        </mat-select>
+        <div class="error" *ngIf="myGender.touched&&myGender.errors&&myGender.errors.required">מין הוא שדה חובה</div>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field appearance="fill">
+        <mat-label>HMO</mat-label>
+        <mat-select matNativeControl [(ngModel)]="user.HMO" [ngModelOptions]="{standalone: true}" #myHMO="ngModel"
+            required>
+            <mat-option *ngFor="let item of HMO" [value]="item">
+                {{item}}
+            </mat-option>
+        </mat-select>
+        <div class="error" *ngIf="myHMO.touched&&myHMO.errors&&myHMO.errors.required">קופת חולים הוא שדה חובה</div>
+    </mat-form-field>
+    <br />
+
+    <section class="section">
+        <div class="example-button-row">
+            <button mat-raised-button color="accent" type="submit" [disabled]="!myForm.valid" >send</button>
+        </div>
+    </section>
+</form>
+<div *ngIf="isExistParent" class="mine">
+<section class="section">
+    <div class="example-button-row">
+        <button mat-raised-button color="accent" type="button" (click)="display()" >Register child</button>
+    </div>
+</section>
+</div>
+<form class="example-form" (ngSubmit)="addChild(myFormC)" #myFormC="ngForm">
+    <div *ngIf="isDisplay">
+        <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="child First name" type="text" name="FirstName" [(ngModel)]="child.FirstName"
+                #myFirstNameC="ngModel" required>
+            <div class="error" *ngIf="myFirstNameC.touched&&myFirstNameC.errors&&myFirstNameC.errors.required">שם פרטי
+                הוא
+                שדה חובה</div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="child Last name" type="text" name="LastName" [(ngModel)]="child.LastName"
+                #myLastNameC="ngModel" required>
+            <div class="error" *ngIf="myLastNameC.touched&&myLastNameC.errors&&myLastNameC.errors.required">שם משפחה הוא
+                שדה
+                חובה
+            </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="child ID" type="number" name="TZ" [(ngModel)]="child.TZ" #myIdC="ngModel"
+                required pattern="[0-9]{9}">
+            <div class="error" *ngIf="myIdC.touched&&myIdC.errors&&myIdC.errors.required">תז היא שדה חובה</div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Birth-Date</mat-label>
+            <input matInput placeholder="child BirthDate" type="date" name="BirthDate" [(ngModel)]="child.BirthDate"
+                #myDateC="ngModel" required>
+            <div class="error" *ngIf="myDateC.touched&&myDateC.errors&&myDateC.errors.required">תאריך הוא שדה חובה</div>
+        </mat-form-field>
+         <section class="section">
+            <div class="example-button-row">
+                <button mat-raised-button color="accent" type="submit" [disabled]="!myFormC.valid" >add child</button>
+            </div>
+        </section>
+        <!-- <input type="submit" [disabled]="!myForm.valid" /> -->
+    </div>
+</form>
+

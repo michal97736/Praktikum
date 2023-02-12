@@ -1,0 +1,17 @@
+<!-- <nav>
+    <ul>
+        <li>
+            <a routerLink="directive">Directive</a>
+        </li>
+        <li>
+            <a routerLink="login">Login</a>
+        </li>
+    </ul>
+</nav> -->
+<div class="my" class="example-button-row" [routerLink]="['/login']">
+    <button mat-stroked-button color="accent"  >Login </button> 
+</div>
+<div class="example-button-row" [routerLink]="['/directive']">
+    <button mat-stroked-button color="accent"  >Directive</button> 
+</div>
+<router-outlet></router-outlet>
